@@ -44,6 +44,7 @@
     <a href="#detalles" style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,252,248,.86)" style-hover="color:#eec089">Detalles</a>
     <a href="#vestimenta" style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,252,248,.86)" style-hover="color:#eec089">Vestimenta</a>
     <a href="#regalos" style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,252,248,.86)" style-hover="color:#eec089">Regalos</a>
+    <a href="#playlist" style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,252,248,.86)" style-hover="color:#eec089">Playlist</a>
     <a href="#rsvp" style="font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#3a3633;background:#c68e4a;padding:.6rem 1.1rem;border-radius:999px" style-hover="background:#b07c3d">RSVP</a>
   </div>
 </nav>
@@ -351,6 +352,21 @@
   </div>
 </section>
 
+<section id="playlist" style="background:#fdfbf7;padding:clamp(4.5rem,11vh,7.5rem) clamp(1rem,5vw,3rem)">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <p data-rv="true" style="font-size:.62rem;letter-spacing:.38em;text-indent:.38em;text-transform:uppercase;color:#9b5f31">La banda sonora</p>
+    <h2 data-rv="true" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5.2vw,3.4rem);color:#4b4f53;margin:.8rem 0 1.2rem">Ponle play a <em style="font-style:italic;color:#9b5f31">nuestra fiesta</em></h2>
+    <p data-rv="true" style="font-size:.95rem;line-height:1.8;color:#6e6862;max-width:46ch;margin:0 auto">Agrega a la playlist las canciones que no pueden faltar en la pista de baile.</p>
+    <div data-rv="true" style="margin-top:clamp(1.8rem,4vh,2.6rem);border-radius:14px;overflow:hidden;border:1px solid rgba(198,142,74,.35)">
+      <iframe title="Playlist del matrimonio en Spotify" src="{{ spotifyEmbed }}" width="100%" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="display:block;border:0"></iframe>
+    </div>
+    <a data-rv="true" href="{{ spotifyUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;background:#6f7046;color:#fdfbf7;padding:.95rem 1.5rem;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;border-radius:999px" style-hover="background:#565733">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.5a.62.62 0 0 1-.86.2c-2.36-1.44-5.33-1.77-8.83-.97a.62.62 0 1 1-.28-1.21c3.83-.88 7.12-.5 9.76 1.12.3.18.39.57.21.86zm1.23-2.72a.78.78 0 0 1-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 1 1-.45-1.49c3.65-1.11 8.19-.57 11.28 1.33.37.22.48.71.26 1.07zm.11-2.84c-3.24-1.92-8.59-2.1-11.68-1.16a.93.93 0 1 1-.54-1.79c3.55-1.08 9.45-.87 13.18 1.34a.93.93 0 0 1-.96 1.61z"></path></svg>
+      Abrir en Spotify
+    </a>
+  </div>
+</section>
+
 <section id="rsvp" style="background:#f4efe4;color:#4b4f53;padding:clamp(5rem,13vh,8.5rem) clamp(1rem,5vw,3rem);text-align:center">
   <div data-rv="true" style="max-width:700px;margin:0 auto">
     <p style="font-family:'Pinyon Script',cursive;font-size:clamp(2.4rem,7vw,4.2rem);color:#9b5f31;line-height:1.1">¡Confírmanos tu asistencia!</p>
@@ -383,7 +399,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;rsvpUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#rsvp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;listaUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#regalos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;banco&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Banco Edwards&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;numeroCuenta&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;00-024-13435-10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;rut&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;19.523.253-9&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;titular&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Felipe Fache&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;correo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;felipefache@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;spotifyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;rsvpUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#rsvp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;listaUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#regalos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;banco&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Banco Edwards&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;numeroCuenta&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;00-024-13435-10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;rut&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;19.523.253-9&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;titular&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Felipe Fache&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;correo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;felipefache@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;}}">
 class Component extends DCLogic {
   constructor(p){
     super(p);
@@ -492,6 +508,8 @@ class Component extends DCLogic {
 
     return {
       cuenta,
+      spotifyUrl: this.props.spotifyUrl ?? "https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA",
+      spotifyEmbed: "https://open.spotify.com/embed/playlist/" + ((this.props.spotifyUrl ?? "https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA").split("/playlist/")[1] || "").split("?")[0] + "?utm_source=generator&theme=0",
       rsvpUrl: this.props.rsvpUrl ?? "#rsvp",
       listaUrl: this.props.listaUrl ?? "#regalos",
       ringD: this.refs.ringD, ringH: this.refs.ringH, ringM: this.refs.ringM, ringS: this.refs.ringS,
