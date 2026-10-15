@@ -305,7 +305,7 @@
     </figure>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.6rem,4vw,3rem);margin-top:clamp(1.4rem,3vh,2.2rem);text-align:left">
-      <div data-rv="true" style="background:#fdfbf7;padding:clamp(1.6rem,3vw,2.4rem);border:1px solid rgba(29,39,51,.08)">
+      <div data-rv="true" style="order:2;background:#fdfbf7;padding:clamp(1.6rem,3vw,2.4rem);border:1px solid rgba(29,39,51,.08)">
         <h3 style="font-family:'Pinyon Script',cursive;font-size:2rem;color:#c68e4a;margin-bottom:1.1rem">Ellas</h3>
         <ul style="list-style:none;display:grid;gap:.9rem;font-size:.9rem;line-height:1.7;color:#6e6862">
           <li><strong style="color:#4b4f53;font-weight:500">Vestido largo</strong> o tenida de cocktail elegante.</li>
@@ -326,28 +326,12 @@
 </section>
 
 <section id="regalos" style="background:#fdfbf7;padding:clamp(4.5rem,11vh,7.5rem) clamp(1rem,5vw,3rem)">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:start">
-    <div data-rv="true">
+  <div style="max-width:720px;margin:0 auto;text-align:center">
+    <div data-rv="true" style="display:flex;flex-direction:column;align-items:center">
       <p style="font-size:.62rem;letter-spacing:.38em;text-indent:.38em;text-transform:uppercase;color:#9b5f31">Mesa de regalos</p>
       <h2 style="font-family:'Pinyon Script',cursive;font-size:clamp(2.4rem,6vw,3.8rem);color:#4b4f53;margin:.7rem 0 1.2rem">¿Nuestro regalo?</h2>
-      <p style="font-size:.95rem;line-height:1.8;color:#6e6862;max-width:42ch">Tu compañía en nuestro matrimonio es nuestro mejor regalo. Si además quieres sorprendernos con un detalle, acá te dejamos dos formas de hacerlo.</p>
+      <p style="font-size:.95rem;line-height:1.8;color:#6e6862;max-width:42ch">Tu compañía en nuestro matrimonio es nuestro mejor regalo. Si además quieres sorprendernos con un detalle, te dejamos nuestra lista de novios en París.</p>
       <a href="{{ listaUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;background:#6f7046;color:#fdfbf7;padding:.95rem 1.5rem;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;border-radius:999px" style-hover="background:#565733">Ver lista de novios</a>
-    </div>
-    <div data-rv="true" style="border:1px solid rgba(29,39,51,.12);background:#f4efe4">
-      <div style="padding:1.3rem 1.5rem;border-bottom:1px solid rgba(29,39,51,.1)">
-        <p style="font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:#9b5f31">Transferencia bancaria</p>
-        <p style="font-family:Marcellus,serif;font-size:1.1rem;color:#4b4f53;margin-top:.4rem">Cuenta Corriente</p>
-      </div>
-      <sc-for list="{{ cuenta }}" as="row" hint-placeholder-count="5">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 1.5rem;border-bottom:1px solid rgba(29,39,51,.07)">
-          <div>
-            <div style="font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;color:#8a929b">{{ row.k }}</div>
-            <div style="font-size:.95rem;color:#4b4f53;margin-top:.25rem">{{ row.v }}</div>
-          </div>
-          <button type="button" onClick="{{ row.copy }}" style="background:none;border:1px solid rgba(198,142,74,.6);color:#9b5f31;font-family:Montserrat,sans-serif;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .85rem;border-radius:999px;cursor:pointer" style-hover="background:#c68e4a;color:#3a3633">Copiar</button>
-        </div>
-      </sc-for>
-      <p style="padding:1rem 1.5rem;font-size:.72rem;line-height:1.7;color:#8a929b">Si transfieres, envíanos el comprobante al correo para agradecerte personalmente.</p>
     </div>
   </div>
 </section>
@@ -399,7 +383,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;spotifyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;rsvpUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#rsvp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;listaUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#regalos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;banco&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Banco Edwards&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;numeroCuenta&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;00-024-13435-10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;rut&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;19.523.253-9&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;titular&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Felipe Fache&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;},&quot;correo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;felipefache@gmail.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Datos bancarios&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;spotifyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;rsvpUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#rsvp&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;},&quot;listaUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://club.noviosparis.cl/home/couple-catalog/21066125&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Enlaces&quot;}}">
 class Component extends DCLogic {
   constructor(p){
     super(p);
@@ -506,12 +490,19 @@ class Component extends DCLogic {
       {k:"Correo", v:this.props.correo ?? "felipefache@gmail.com"}
     ].map(r=>({...r, copy: copy(r.v)}));
 
+    const allText = cuenta.map(r=>r.k+": "+r.v).join("\n");
+    const copyAll = ()=>{
+      const done = ()=>{ this.setState({copiedAll:true}); clearTimeout(this.copyT); this.copyT = setTimeout(()=>this.setState({copiedAll:false}), 2200); };
+      if(navigator.clipboard) navigator.clipboard.writeText(allText).then(done, done); else done();
+    };
     return {
       cuenta,
+      copyAll,
+      copyAllLabel: this.state && this.state.copiedAll ? "¡Datos copiados!" : "Copiar todos los datos",
       spotifyUrl: this.props.spotifyUrl ?? "https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA",
       spotifyEmbed: "https://open.spotify.com/embed/playlist/" + ((this.props.spotifyUrl ?? "https://open.spotify.com/playlist/6oUiBeDmC0Rg4WdW5qwzsA").split("/playlist/")[1] || "").split("?")[0] + "?utm_source=generator&theme=0",
       rsvpUrl: this.props.rsvpUrl ?? "#rsvp",
-      listaUrl: this.props.listaUrl ?? "#regalos",
+      listaUrl: this.props.listaUrl ?? "https://club.noviosparis.cl/home/couple-catalog/21066125",
       ringD: this.refs.ringD, ringH: this.refs.ringH, ringM: this.refs.ringM, ringS: this.refs.ringS,
       numD: this.refs.numD, numH: this.refs.numH, numM: this.refs.numM, numS: this.refs.numS,
       loader: this.refs.loader,
