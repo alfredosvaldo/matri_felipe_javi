@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<title>Confirmar asistencia · Javiera &amp; Felipe</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fdfbf7;color:#4a4e52;font-family:Montserrat,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+  a{color:#9b5f31;text-decoration:none}
+  a:hover{color:#7a4a24}
+  input,textarea,button{font-family:inherit}
+  input::placeholder,textarea::placeholder{color:#a8a29a}
+  ::selection{background:#c68e4a;color:#fdfbf7}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#fdfbf7;display:flex;flex-direction:column">
+
+<nav style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem clamp(1rem,4vw,3rem);border-bottom:1px solid rgba(198,142,74,.25)">
+  <a href="index.html" style="display:flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#6e6862" style-hover="color:#9b5f31">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:14px;height:14px"><path d="M15 18l-6-6 6-6"></path></svg>
+    Volver
+  </a>
+  <a href="index.html" style="font-family:Marcellus,serif;font-size:1.05rem;letter-spacing:.3em;color:#4b4f53">J<em style="font-family:'Pinyon Script',cursive;font-style:normal;color:#c68e4a;letter-spacing:0;margin:0 .12em">&amp;</em>F</a>
+  <span style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#9b5f31">12 · 03 · 27</span>
+</nav>
+
+<header style="text-align:center;padding:clamp(3rem,8vh,5rem) 1.2rem clamp(2rem,5vh,3rem)">
+  <p style="font-size:.62rem;letter-spacing:.38em;text-indent:.38em;text-transform:uppercase;color:#9b5f31">RSVP</p>
+  <h1 style="font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(2.6rem,8vw,4.4rem);color:#4b4f53;line-height:1.1;margin-top:.6rem">Confirma tu asistencia</h1>
+  <p style="font-size:.9rem;line-height:1.8;color:#6e6862;max-width:44ch;margin:1rem auto 0;text-wrap:pretty">Busca tu nombre, cuéntanos si nos acompañas y si tienes alguna restricción alimentaria. Plazo: <strong style="font-weight:500;color:#9b5f31">12 de febrero de 2027</strong>.</p>
+</header>
+
+<main style="flex:1;width:100%;max-width:640px;margin:0 auto;padding:0 1.2rem clamp(4rem,10vh,6rem)">
+
+  <sc-if value="{{ isSearch }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#f4efe4;border:1px solid rgba(198,142,74,.3);padding:clamp(1.4rem,4vw,2.2rem)">
+      <label for="jf-q" style="display:block;font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:#9b5f31;margin-bottom:.8rem">Tu nombre o apellido</label>
+      <div style="position:relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9b5f31" stroke-width="1.6" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <input id="jf-q" type="search" autocomplete="off" value="{{ query }}" onChange="{{ onQuery }}" placeholder="Ej: Vega, Matilde, Fache…" style="width:100%;font-size:1rem;color:#4b4f53;background:#fdfbf7;border:1px solid rgba(75,79,83,.2);border-radius:999px;padding:1rem 1.2rem 1rem 2.9rem;outline:none" style-focus="border-color:#c68e4a"></input>
+      </div>
+
+      <sc-if value="{{ showResults }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1.1rem">
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+            <button type="button" onClick="{{ r.pick }}" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;background:#fdfbf7;border:1px solid rgba(75,79,83,.12);padding:.95rem 1.2rem;cursor:pointer;color:#4b4f53" style-hover="border-color:#c68e4a;background:#fff">
+              <span style="display:flex;flex-direction:column;gap:.25rem">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;line-height:1.1">{{ r.name }}</span>
+                <span style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8278">{{ r.sub }}</span>
+              </span>
+              <span style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#9b5f31;white-space:nowrap">{{ r.cta }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <p style="margin-top:1.1rem;font-size:.85rem;line-height:1.7;color:#6e6862">No encontramos ese nombre. Prueba solo con tu apellido, o escríbenos a <a href="mailto:felipefache@gmail.com">felipefache@gmail.com</a>.</p>
+      </sc-if>
+      <sc-if value="{{ showHint }}" hint-placeholder-val="{{ true }}">
+        <p style="margin-top:1rem;font-size:.75rem;line-height:1.7;color:#8a8278">Escribe al menos 2 letras.</p>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isForm }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:1.4rem">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(198,142,74,.35)">
+        <div>
+          <p style="font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:#9b5f31">Invitación para</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.1;color:#4b4f53;margin-top:.35rem">{{ guestName }}</h2>
+        </div>
+        <button type="button" onClick="{{ back }}" style="background:none;border:0;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#6e6862;cursor:pointer;padding:.4rem 0;white-space:nowrap" style-hover="color:#9b5f31">No soy yo</button>
+      </div>
+
+      <sc-if value="{{ already }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:.8rem;line-height:1.7;color:#6f7046;background:rgba(111,112,70,.1);padding:.8rem 1rem">Ya enviaste una confirmación desde este dispositivo. Si la envías de nuevo, tomaremos la más reciente.</p>
+      </sc-if>
+
+      <div style="background:#f4efe4;border:1px solid rgba(198,142,74,.3);padding:clamp(1.3rem,4vw,2rem)">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:#4b4f53;margin-bottom:1rem">¿Nos acompañas el 12 de marzo?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+          <sc-for list="{{ attendOpts }}" as="o" hint-placeholder-count="2">
+            <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ o.pick }}" style="padding:1rem;border-radius:999px;border:1px solid #6f7046;background:#6f7046;color:#fdfbf7;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">{{ o.label }}</button>
+            </sc-if>
+            <sc-if value="{{ o.off }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{ o.pick }}" style="padding:1rem;border-radius:999px;border:1px solid rgba(75,79,83,.25);background:#fdfbf7;color:#4b4f53;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="border-color:#6f7046">{{ o.label }}</button>
+            </sc-if>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{ hasPartner }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#f4efe4;border:1px solid rgba(198,142,74,.3);padding:clamp(1.3rem,4vw,2rem)">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:#4b4f53;margin-bottom:.3rem">{{ partnerQ }}</p>
+          <p style="font-size:.78rem;color:#8a8278;margin-bottom:1rem">Tu invitación incluye a una persona más.</p>
+          <sc-if value="{{ partnerUnknown }}" hint-placeholder-val="{{ false }}">
+            <input type="text" value="{{ pName }}" onChange="{{ onPName }}" placeholder="Nombre y apellido de tu acompañante" style="width:100%;font-size:.95rem;color:#4b4f53;background:#fdfbf7;border:1px solid rgba(75,79,83,.2);padding:.9rem 1rem;margin-bottom:.9rem;outline:none" style-focus="border-color:#c68e4a"></input>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+            <sc-for list="{{ partnerOpts }}" as="o" hint-placeholder-count="2">
+              <sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ o.pick }}" style="padding:1rem;border-radius:999px;border:1px solid #6f7046;background:#6f7046;color:#fdfbf7;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer">{{ o.label }}</button>
+              </sc-if>
+              <sc-if value="{{ o.off }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ o.pick }}" style="padding:1rem;border-radius:999px;border:1px solid rgba(75,79,83,.25);background:#fdfbf7;color:#4b4f53;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="border-color:#6f7046">{{ o.label }}</button>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-for list="{{ persons }}" as="p" hint-placeholder-count="0">
+        <div style="background:#fdfbf7;border:1px solid rgba(198,142,74,.3);padding:clamp(1.3rem,4vw,2rem)">
+          <p style="font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:#9b5f31">Alimentación</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:#4b4f53;margin:.3rem 0 1rem">{{ p.title }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+            <sc-for list="{{ p.chips }}" as="c" hint-placeholder-count="6">
+              <sc-if value="{{ c.on }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ c.toggle }}" style="display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;border-radius:999px;border:1px solid #9b5f31;background:#9b5f31;color:#fdfbf7;font-size:.74rem;cursor:pointer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M20 6L9 17l-5-5"></path></svg>{{ c.label }}
+                </button>
+              </sc-if>
+              <sc-if value="{{ c.off }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ c.toggle }}" style="padding:.6rem 1rem;border-radius:999px;border:1px solid rgba(75,79,83,.22);background:transparent;color:#4b4f53;font-size:.74rem;cursor:pointer" style-hover="border-color:#9b5f31;color:#9b5f31">{{ c.label }}</button>
+              </sc-if>
+            </sc-for>
+          </div>
+          <sc-if value="{{ p.showOtro }}" hint-placeholder-val="{{ false }}">
+            <input type="text" value="{{ p.otro }}" onChange="{{ p.onOtro }}" placeholder="¿Cuál? Ej: sin mariscos, kosher, halal…" style="width:100%;font-size:.9rem;color:#4b4f53;background:#f4efe4;border:1px solid rgba(75,79,83,.15);padding:.85rem 1rem;margin-top:.8rem;outline:none" style-focus="border-color:#c68e4a"></input>
+          </sc-if>
+          <label style="display:block;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#6e6862;margin:1.2rem 0 .5rem">Alergias (opcional)</label>
+          <input type="text" value="{{ p.alergias }}" onChange="{{ p.onAlergias }}" placeholder="Ej: nueces, maní, crustáceos…" style="width:100%;font-size:.9rem;color:#4b4f53;background:#f4efe4;border:1px solid rgba(75,79,83,.15);padding:.85rem 1rem;outline:none" style-focus="border-color:#c68e4a"></input>
+        </div>
+      </sc-for>
+
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <label style="font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#6e6862">Mensaje para los novios (opcional)</label>
+        <textarea rows="3" value="{{ mensaje }}" onChange="{{ onMensaje }}" placeholder="Unas palabras para Javiera y Felipe…" style="width:100%;font-size:.9rem;line-height:1.6;color:#4b4f53;background:#fdfbf7;border:1px solid rgba(75,79,83,.2);padding:.9rem 1rem;resize:vertical;outline:none" style-focus="border-color:#c68e4a"></textarea>
+      </div>
+
+      <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:.8rem;color:#9b3b2a">{{ error }}</p>
+      </sc-if>
+
+      <button type="button" onClick="{{ submit }}" style="display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;background:#c68e4a;color:#3a3633;border:0;border-radius:999px;padding:1.15rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;cursor:pointer" style-hover="background:#b07c3d">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px"><path d="M20 6L9 17l-5-5"></path></svg>
+        {{ submitLabel }}
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center;background:#f4efe4;border:1px solid rgba(198,142,74,.3);padding:clamp(2.2rem,6vw,3.4rem) clamp(1.4rem,4vw,2.4rem)">
+      <svg viewBox="0 0 44 20" fill="none" stroke="#c68e4a" stroke-width="1" style="width:88px;margin:0 auto 1.4rem;display:block"><path d="M2 10h14M28 10h14M22 3c3 3 3 11 0 14-3-3-3-11 0-14z"></path></svg>
+      <p style="font-family:'Pinyon Script',cursive;font-size:clamp(2.2rem,7vw,3rem);color:#9b5f31;line-height:1.1">{{ doneTitle }}</p>
+      <p style="font-size:.92rem;line-height:1.8;color:#5d5852;max-width:40ch;margin:1rem auto 0">{{ doneText }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.8rem">
+        <a href="index.html" style="display:inline-flex;align-items:center;background:#6f7046;color:#fdfbf7;padding:.95rem 1.5rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;border-radius:999px" style-hover="background:#565733">Volver al sitio</a>
+        <button type="button" onClick="{{ back }}" style="background:none;border:1px solid rgba(155,95,49,.5);color:#9b5f31;padding:.95rem 1.5rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;border-radius:999px;cursor:pointer" style-hover="background:rgba(155,95,49,.08)">Confirmar a otra persona</button>
+      </div>
+    </div>
+  </sc-if>
+
+</main>
+
+<footer style="text-align:center;padding:2rem 1.2rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#8a8278;border-top:1px solid rgba(198,142,74,.2)">Javiera &amp; Felipe · 12 de marzo de 2027 · Las Salinas</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;endpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycbwVR93svBztl_W2TD0xhILZv1qdtXi8ebvYhBMOX08DlLNfuuGpTVA2cY3Zy9pnt4Ds3g/exec&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Confirmaciones&quot;}}">
+const GUESTS = [["Ana María Vega"],["Matias Fache"],["Barbara Machuca"],["Sebastián Fache"],["Karina Muñoz"],["Pedro Vega"],["Alicia Madariaga"],["Pedro Iván Vega","",1],["Paula Vega","Lucas"],["Hernán Vega"],["Rebeca de Vega"],["Hernán Vega Espinoza","",1],["Ernesto Vega Espinoza","",1],["Liliana Vega"],["Andrea Agüero"],["Fernanda Agüero"],["Luis Muñoz"],["Ignacio Agüero"],["Lorena Lorenzo Espíndola"],["Manuel Cabello"],["Corina María Ávila Caballero"],["Sergio Enrique Muñoz Zúñiga"],["Pablo Cabello"],["Carola Fache","Tati"],["Tatiana Fache"],["Martín","Emilia"],["Aldo Fache"],["Maximiliano Fache"],["Angela Olivares"],["Carlos Fache","Barbara Lara"],["Franco Fache"],["Pola"],["Monica"],["Karin Fache","",1],["Steffy Barrios"],["Carla Claeys"],["Fernando San Marín"],["Lorena Mondaca"],["Matilde Mera","Antony"],["Consuelo Soza"],["Gina Isidori"],["Coca Isidori"],["Alfredo Íñiguez"],["Camila Armijo"],["Vicente Rivera","",1],["Darío Baeza"],["Rafael Rubio"],["Pablo Loyola"],["Javiera Flores"],["Javiera Gutierrez"],["Vicente Enríquez"],["Eduardo Parra"],["Catherin Medina"],["Sebastian Marchant","",1],["Gabriel Sobarzo"],["Sebastian Foitzick"],["Joaquín Castro","",1],["Lucas Melville","",1],["Tomas Erazo","",1],["Rachel Zapata"],["Patricio Ulloa","",1],["Maximiliano Domínguez","",1],["Santiago Martínez","",1],["Jorge Mansilla","",1],["Sebastian Rivera","",1],["Seba Maturana"],["Daniel Abarca"],["Loreto Tello"],["Valentina Machuca","Jose Manuel Reino"],["Marianela Díaz Vásquez"],["Martín Acosta Díaz"],["Nancy Vásquez Meneses"],["Ramón Valencia Valenzuela"],["Ramón Valencia Vásquez"],["Lorena Pérez Navarro"],["Emma Valencia Pérez"],["Emilia Valencia Pérez"],["Juan Acosta"],["Jorge Baraybar Espinoza"],["Patricia Espinoza"],["Patricia Avelar Espinoza"],["Alejandra Baraybar Espinoza"],["Patricio Gaytán"],["Maximiliano Gaytán"],["Jorge Baraybar (abuelo)"],["Leticia Carcamo"],["Daniela Baraybar Carcamo"],["Luis Díaz"],["Lucía Guerrero"],["Patricia Cordova"],["Rodrigo Muñoz"],["Rodrigo Muñoz Cordova"],["Emilio Muñoz Cordova"],["Fernanda Muñoz Cordova"],["Felipe Vera"],["Camila Catalán"],["Paulina Fontanaz"],["Bastian Parra"],["Frances de la Fuente"],["Ricardo Saldivia"],["Jorge Bernales Pastenes"],["Monica Zamora Suárez"],["Marcelo Araya Ibarra"],["Ivon Ahumada"],["Jorge Labrin"],["Claudia Ahumada"],["Alfredo Alan"],["Paula Quesada"],["Patricio Orellana"],["Elizabeth Valle"],["Manuel Miranda"],["Paula Cortés Mancilla"],["Pablo Terzago Suárez"],["Valentina Rojas Barra"],["Agustin Chacon Oelckers"],["Constanza Araya Vander"],["Angelo Ercoli"],["Paula Órdenes Torres"],["Cami Basaur Pantoja"],["Sofía Cassano Galleguillos"],["Rosa Aguilera Mena"],["Gabriela Ibaceta Panitrú"],["Gery González Gómez"],["Nallaly Bazaez Campos"],["Susan García Flores"],["Paula Fernandez Henríquez"],["Ximena Adriazola Rivera"],["Cristian Lleucún González"],["Gonzalo Wendt"],["Luna Barrientos"],["Paola Ramírez Manzanares"],["Claudio Peréz"],["Camila Loncomilla Agüero"],["Matias Astudilo Fuentes"]];
+const DIETS = ["Sin restricciones","Vegetariano","Vegano","Sin gluten","Sin lactosa","Otra"];
+const norm = s => (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const LIST = GUESTS.map((g,i)=>({id:i+1, name:g[0], partner:g[1]||"", placeholder:!!g[2], hasPartner:g.length>1, key:norm(g[0]+" "+(g[1]||""))}));
+const blank = () => ({diet:[], otro:"", alergias:""});
+
+class Component extends DCLogic {
+  state = { step:"search", query:"", selId:null, asiste:null, pAsiste:null, pName:"", main:blank(), partner:blank(), mensaje:"", sending:false, error:"", already:false };
+
+  get endpoint(){ return ((this.props.endpoint || "") || "https://script.google.com/macros/s/AKfycbwVR93svBztl_W2TD0xhILZv1qdtXi8ebvYhBMOX08DlLNfuuGpTVA2cY3Zy9pnt4Ds3g/exec").trim(); }
+
+  saved(){ try { return JSON.parse(localStorage.getItem("jf-rsvp")||"{}"); } catch(e){ return {}; } }
+
+  pick(g){ this.setState({ step:"form", selId:g.id, asiste:null, pAsiste:null, pName:"", main:blank(), partner:blank(), mensaje:"", error:"", already:!!this.saved()[g.id] }); window.scrollTo({top:0, behavior:"smooth"}); }
+
+  toggleDiet(who, label){
+    this.setState(s=>{
+      let d = s[who].diet.slice();
+      if(d.includes(label)) d = d.filter(x=>x!==label);
+      else if(label==="Sin restricciones") d = [label];
+      else d = d.filter(x=>x!=="Sin restricciones").concat(label);
+      return { [who]: {...s[who], diet:d} };
+    });
+  }
+  setField(who, f, v){ this.setState(s=>({ [who]: {...s[who], [f]:v} })); }
+
+  async submit(g){
+    const s = this.state;
+    if(!s.asiste) return this.setState({error:"Indícanos si asistirás."});
+    if(g.hasPartner && s.pAsiste===null) return this.setState({error:"Indícanos si viene tu acompañante."});
+    if(g.hasPartner && g.placeholder && s.pAsiste==="si" && !s.pName.trim()) return this.setState({error:"Escribe el nombre de tu acompañante."});
+    const dietStr = p => p.diet.map(d=>d==="Otra" ? ("Otra: "+(p.otro||"")) : d).join(", ");
+    const pYes = g.hasPartner && s.pAsiste==="si";
+    const payload = {
+      id:g.id, invitado:g.name, asiste: s.asiste==="si"?"Sí":"No",
+      dieta: s.asiste==="si" ? (dietStr(s.main)||"Sin restricciones") : "", alergias: s.asiste==="si" ? s.main.alergias : "",
+      acompanante: g.hasPartner ? (g.placeholder ? s.pName.trim() : g.partner) : "",
+      asisteAcompanante: g.hasPartner ? (pYes?"Sí":"No") : "",
+      dietaAcompanante: pYes ? (dietStr(s.partner)||"Sin restricciones") : "", alergiasAcompanante: pYes ? s.partner.alergias : "",
+      mensaje: s.mensaje, total: (s.asiste==="si"?1:0)+(pYes?1:0)
+    };
+    this.setState({sending:true, error:""});
+    try {
+      if(this.endpoint){
+        await fetch(this.endpoint, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(payload) });
+      } else {
+        console.warn("RSVP: falta configurar 'endpoint' (Google Apps Script). Respuesta guardada solo localmente.", payload);
+      }
+      const sv = this.saved(); sv[g.id] = payload; localStorage.setItem("jf-rsvp", JSON.stringify(sv));
+      this.setState({sending:false, step:"done", lastAsiste:payload.asiste, lastTotal:payload.total});
+      window.scrollTo({top:0, behavior:"smooth"});
+    } catch(e){
+      this.setState({sending:false, error:"No pudimos enviar tu respuesta. Revisa tu conexión e inténtalo de nuevo."});
+    }
+  }
+
+  renderVals(){
+    const s = this.state;
+    const q = norm(s.query).trim();
+    const toks = q.split(/\s+/).filter(Boolean);
+    const sv = this.saved();
+    const results = q.length>=2 ? LIST.filter(g=>toks.every(t=>g.key.includes(t))).slice(0,8).map(g=>({
+      name:g.name,
+      sub: g.hasPartner ? (g.placeholder ? "Invitación + acompañante" : "Junto a "+g.partner) : "Invitación individual",
+      cta: sv[g.id] ? "Actualizar" : "Confirmar",
+      pick:()=>this.pick(g)
+    })) : [];
+    const g = LIST.find(x=>x.id===s.selId) || LIST[0];
+    const opt = (cur, key) => [["si","Sí, ahí estaré"],["no","No podré ir"]].map(([v,l])=>({label: key==="p" ? (v==="si"?"Sí, viene":"No viene") : l, on:cur===v, off:cur!==v, pick:()=>this.setState({[key==="p"?"pAsiste":"asiste"]:v, error:""})}));
+    const person = (who, title) => {
+      const p = s[who];
+      return { title,
+        chips: DIETS.map(d=>({label:d, on:p.diet.includes(d), off:!p.diet.includes(d), toggle:()=>this.toggleDiet(who,d)})),
+        showOtro: p.diet.includes("Otra"), otro:p.otro, onOtro:e=>this.setField(who,"otro",e.target.value),
+        alergias:p.alergias, onAlergias:e=>this.setField(who,"alergias",e.target.value) };
+    };
+    const persons = [];
+    if(s.asiste==="si") persons.push(person("main", g.hasPartner ? g.name : "¿Alguna restricción?"));
+    if(g.hasPartner && s.pAsiste==="si") persons.push(person("partner", g.placeholder ? (s.pName.trim()||"Tu acompañante") : g.partner));
+
+    const yes = s.lastAsiste==="Sí";
+    return {
+      isSearch: s.step==="search", isForm: s.step==="form", isDone: s.step==="done",
+      query: s.query, onQuery: e=>this.setState({query:e.target.value}),
+      results, showResults: results.length>0, noResults: q.length>=2 && results.length===0, showHint: q.length<2,
+      guestName: g.name, already: s.already,
+      attendOpts: opt(s.asiste,"m"),
+      hasPartner: g.hasPartner, partnerUnknown: g.hasPartner && g.placeholder,
+      partnerQ: g.placeholder ? "¿Vienes con acompañante?" : "¿Viene "+g.partner+"?",
+      pName: s.pName, onPName: e=>this.setState({pName:e.target.value}),
+      partnerOpts: opt(s.pAsiste,"p"),
+      persons,
+      mensaje: s.mensaje, onMensaje: e=>this.setState({mensaje:e.target.value}),
+      error: s.error,
+      submitLabel: s.sending ? "Enviando…" : "Enviar confirmación",
+      submit: ()=>{ if(!s.sending) this.submit(g); },
+      back: ()=>this.setState({step:"search", selId:null, error:""}),
+      doneTitle: yes ? "¡Nos vemos en Las Salinas!" : "¡Gracias por avisarnos!",
+      doneText: yes ? ("Recibimos tu confirmación"+(s.lastTotal>1?" para 2 personas":"")+". Te esperamos el viernes 12 de marzo a las 18:00 hrs en la Iglesia Naval.") : "Te vamos a echar de menos. Gracias por contarnos con tiempo."
+    };
+  }
+}
+</script>
+</body>
+</html>
